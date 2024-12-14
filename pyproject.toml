@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conditional_drawdown"
+version = "0.1.1"
+description = "A Python library for drawdown risk analysis with Conditional Expected Drawdown (CED)."
+authors = [
+    { name = "interQuant", email = "cinzeis-rehang.0l@icloud.com" }
+]
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "pandas",
+    "numba",
+    "yfinance"
+]
+keywords = ["finance", "drawdown", "risk", "portfolio", "CED"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License"
+]
