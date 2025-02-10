@@ -1,3 +1,4 @@
+from textwrap import fill
 from typing import Union
 import numpy as np
 from numba import njit
@@ -81,8 +82,29 @@ def CED(
     t: int = 21,
     alpha: float = 0.9
 ) -> float:
-    """Computes the Conditional Expected Drawdown (CED) of an array of returns."""
-    if returns.size == 0: return np.nan
+    """Computes the Conditional Expected Drawdown (CED) of an array of returns.""" 
+    if returns.size == 0: 
+        return np.nan
     r_mdd = rolling_max_drawdown(returns, t)    
     quantile = np.quantile(r_mdd, alpha)
     return np.mean( r_mdd[r_mdd >= quantile])
+
+@njit
+def expanding_CED(returns: np.ndarray, t=21, alpha=0.9):
+    """Computes the Conditional Expected Drawdown (CED) over an expanding array of returns.""" 
+    if returns.size < t:
+        return np.full(returns.shape, np.nan)  # Return a NumPy array instead of a scalar
+
+    ced_series = np.full(returns.size, np.nan)  # Initialize with NaNs
+
+    for a in range(t-1, returns.size):  # Ensure at least t observations
+        _ret = returns[:a+1]  # Expanding window
+        ced_series[a] = CED(_ret, t, alpha)
+
+    return ced_series  # Always return an array
+
+def series_CED(return_series: pd.Series, t=21, alpha=0.9):
+    """Computes the Conditional Expected Drawdown (CED) of a Series of returns."""
+    _idx = return_series.index
+    _arr = return_series.values    
+    return pd.Series(expanding_CED(_arr, t, alpha), index=_idx)
