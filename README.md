@@ -2,7 +2,7 @@
 
 ## Overview
 
-`conditional-drawdown` is a Python library designed for advanced drawdown risk analysis, with a focus on the Conditional Expected Drawdown (CED) metric. Unlike traditional risk metrics like volatility or Value-at-Risk, CED accounts for the path dependency of drawdowns and provides a robust measure of extreme risk. This tool is ideal for portfolio managers, risk analysts, and quantitative researchers.
+`conditional-drawdown` is a Python library designed for reliable drawdown risk analysis, using the Conditional Expected Drawdown (CED) metric. Unlike traditional risk metrics like volatility or Value-at-Risk, CED accounts for the path dependency of drawdowns and provides a robust measure of extreme risk. This tool is ideal for portfolio managers, risk analysts, and quantitative researchers.
 
 Key features include:
 
