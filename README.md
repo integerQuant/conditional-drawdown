@@ -1,4 +1,6 @@
-# Conditional Drawdown
+> **Deprecated:**  
+> This Python library is no longer maintained.  
+> Please use the new Rust implementation with Python bindings available at [integerQuant/ddstats](https://github.com/integerQuant/ddstats).
 
 ## Overview
 
